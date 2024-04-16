@@ -62,7 +62,7 @@ export default function HeaderDashboard() {
       document?.msExitFullscreen();
     }
   };
-  const handleResize = () => {};
+  const handleResize = () => { };
   useEffect(() => {
     if (window.innerWidth > 990) {
       document
@@ -93,7 +93,7 @@ export default function HeaderDashboard() {
             <div className="col-auto">
               <div className="d-flex items-center">
                 <div className="header__explore text-dark-1">
-                  {/* <button
+                  <button
                     onClick={() => {
                       document
                         .getElementById("dashboardOpenClose")
@@ -102,7 +102,7 @@ export default function HeaderDashboard() {
                     className="d-flex items-center js-dashboard-home-9-sidebar-toggle"
                   >
                     <i className="icon -dark-text-white icon-explore"></i>
-                  </button> */}
+                  </button>
                 </div>
 
                 <div className="header__logo ml-30 md:ml-20">
@@ -129,9 +129,60 @@ export default function HeaderDashboard() {
             <div className="col-auto">
               <div className="d-flex items-center">
                 <div className="text-white d-flex items-center lg:d-none mr-15">
-                
 
-                 
+                  <div className="dropdown__item -dark-bg-dark-2 -dark-border-white-10">
+                    <div className="text-14 y-gap-15">
+                      <div>
+                        <Link
+                          href="/dashboard"
+                          className="d-block text-dark-1"
+                        >
+                          Dashboard
+                        </Link>
+                      </div>
+                      <div>
+                        <Link
+                          href="/dshb-courses"
+                          className="d-block text-dark-1"
+                        >
+                          My Courses
+                        </Link>
+                      </div>
+                      <div>
+                        <Link
+                          href="/dshb-bookmarks"
+                          className="d-block text-dark-1"
+                        >
+                          Bookmarks
+                        </Link>
+                      </div>
+                      <div>
+                        <Link
+                          href="/dshb-listing"
+                          className="d-block text-dark-1"
+                        >
+                          Add Listing
+                        </Link>
+                      </div>
+                      <div>
+                        <Link
+                          href="/dshb-reviews"
+                          className="d-block text-dark-1"
+                        >
+                          Reviews
+                        </Link>
+                      </div>
+                      <div>
+                        <Link
+                          href="/dshb-settings"
+                          className="d-block text-dark-1"
+                        >
+                          Settings
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
 
                 <div className="d-flex items-center sm:d-none">
@@ -186,9 +237,8 @@ export default function HeaderDashboard() {
                     </a>
 
                     <div
-                      className={`toggle-element js-notif-toggle  ${
-                        isOnNotification ? "-is-el-visible" : ""
-                      } -`}
+                      className={`toggle-element js-notif-toggle  ${isOnNotification ? "-is-el-visible" : ""
+                        } -`}
                     >
                       <div className="toggle-bottom -notifications bg-white shadow-4 border-light rounded-8 mt-10">
                         <div className="py-30 px-30">
@@ -196,11 +246,10 @@ export default function HeaderDashboard() {
                             {notifications.map((elm, i) => (
                               <div
                                 key={i}
-                                className={`d-flex items-center  ${
-                                  i !== 0
+                                className={`d-flex items-center  ${i !== 0
                                     ? "border-top-light -dark-border-top-light-5"
                                     : ""
-                                } `}
+                                  } `}
                               >
                                 <div className="shrink-0">
                                   <Image
@@ -242,9 +291,8 @@ export default function HeaderDashboard() {
                   </a>
 
                   <div
-                    className={`toggle-element js-profile-toggle ${
-                      isOnProfile ? "-is-el-visible" : ""
-                    } -`}
+                    className={`toggle-element js-profile-toggle ${isOnProfile ? "-is-el-visible" : ""
+                      } -`}
                   >
                     <div className="toggle-bottom -profile bg-white shadow-4 border-light rounded-8 mt-10">
                       <div className="px-30 py-30">
@@ -252,9 +300,8 @@ export default function HeaderDashboard() {
                           {sidebarItems.map((elm, i) => (
                             <div
                               key={i}
-                              className={`sidebar__item ${
-                                elm.id == 1 ? "-is-active -dark-bg-dark-2" : ""
-                              }`}
+                              className={`sidebar__item ${elm.id == 1 ? "-is-active -dark-bg-dark-2" : ""
+                                }`}
                             >
                               <a
                                 href={elm.href}
