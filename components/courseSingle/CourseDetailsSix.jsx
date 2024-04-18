@@ -36,7 +36,6 @@ export default function CourseDetailsSix({ id }) {
     const url = window.location.pathname;
     const parts = url.split('/');
     const courseId = parts[2]; 
-    console.log('asdads');
     dispatch(fetchCourseId(courseId))
   }, []);
   
@@ -45,7 +44,6 @@ setIsOpen(true)
 setIsVideo(item)
 }
 
-  console.log(courseIdData,"checkData");
 
   return (
     <>
@@ -333,7 +331,7 @@ setIsVideo(item)
                     className={`tabs__pane -tab-item-4 ${activeTab == 4 ? "is-active" : ""
                       } `}
                   >
-                    <Reviews />
+                    <Reviews courseId={courseIdData?._id} />
                   </div>
                 </div>
               </div>

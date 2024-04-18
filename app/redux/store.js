@@ -11,6 +11,7 @@ import enrollSlice from './slices/enrollSlice';
 import getEnrollReducer from './slices/enrollByIdSlice';
 import getCourseIdReducer from './slices/courseIdSlice'
 import teacherDashboardReducer from './slices/dashboardSlice'
+import getReviewReducer from './slices/reviewSlice'
 
 export const RESET_STORE = 'RESET_STORE';
 const rootReducer = (state, action) => {
@@ -29,7 +30,8 @@ const rootReducer = (state, action) => {
     enrollCourse: enrollSlice,
     enrollStudent: getEnrollReducer,
     courseById: getCourseIdReducer,
-    teacherDashboard: teacherDashboardReducer
+    teacherDashboard: teacherDashboardReducer,
+    allReviews: getReviewReducer
   })(state, action);
 };
 
