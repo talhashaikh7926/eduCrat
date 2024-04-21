@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function CoursesCardDashboard({ data }) {
   const [activeShare, setActiveShare] = useState(false);
   const [rating, setRating] = useState([]);
-
+console.log(data,"d");
   useEffect(() => {
     const tempRating = [];
     for (let i = Math.floor(data.rating); i >= 1; i--) {
@@ -72,12 +72,12 @@ export default function CoursesCardDashboard({ data }) {
 
         <div className="progress-bar mt-10">
           <div className="progress-bar__bg bg-light-3"></div>
-          <div className="progress-bar__bar bg-purple-1 w-1/5"></div>
+          <div className="progress-bar__bar bg-purple-1" style={{ width: `${data?.enrollProgress}%` }}></div>
         </div>
 
         <div className="d-flex y-gap-10 justify-between items-center mt-10">
-          <div className="text-dark-1">% 25 Completed</div>
-          <div>25%</div>
+          <div className="text-dark-1">% {data?.enrollProgress} Completed</div>
+          <div>{data?.enrollProgress}%</div>
         </div>
       </div>
     </div>

@@ -9,17 +9,17 @@ import Charts from "./Charts";
 import PieChartComponent from "./PieCharts";
 import Image from "next/image";
 import Link from "next/link";
-import { fetchDashboard } from "@/app/redux/slices/dashboardSlice";
+import { fetchadminDashboard } from "@/app/redux/slices/adminDashSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function DashboardOne() {
   const dispatch = useDispatch();
-  const { fetching, dashboard, error } = useSelector((state) => state.teacherDashboard);
+  const { fetching, admdashboard, error } = useSelector((state) => state.admindashboard);
   useEffect(() => {
 
-    dispatch(fetchDashboard());
-  }, []);
-  console.log(dashboard, "----");
+    dispatch(fetchadminDashboard());
+  }, [dispatch]);
+  console.log(admdashboard, "----");
 
   return (
     <div className="dashboard__main">
@@ -40,7 +40,7 @@ export default function DashboardOne() {
                 <div>
                   <div className="lh-1 fw-500">Total Sales</div>
                   <div className="text-24 lh-1 fw-700 text-dark-1 mt-20">
-                    ${dashboard.totalSales}
+                    ${admdashboard.totalSales}
                   </div>
                   <div className="lh-1 mt-25">
                     <span className="text-purple-1"></span>
@@ -57,7 +57,7 @@ export default function DashboardOne() {
                 <div>
                   <div className="lh-1 fw-500">Total Courses</div>
                   <div className="text-24 lh-1 fw-700 text-dark-1 mt-20">
-                  {dashboard.totalCourses}
+                  {admdashboard.totalCourses}
                   </div>
                   <div className="lh-1 mt-25">
                     <span className="text-purple-1"></span>
@@ -73,7 +73,7 @@ export default function DashboardOne() {
                 <div>
                   <div className="lh-1 fw-500">Total Students</div>
                   <div className="text-24 lh-1 fw-700 text-dark-1 mt-20">
-                    {dashboard.totalStudents}
+                    {admdashboard.totalStudents}
                   </div>
                   <div className="lh-1 mt-25">
                     <span className="text-purple-1"></span> 
@@ -90,7 +90,7 @@ export default function DashboardOne() {
                 <div>
                   <div className="lh-1 fw-500">Total Instructors</div>
                   <div className="text-24 lh-1 fw-700 text-dark-1 mt-20">
-                     {dashboard.popularTeachers?.length}
+                     {admdashboard?.totalTeachers}
                   </div>
                   <div className="lh-1 mt-25">
                     <span className="text-purple-1"></span>
@@ -249,7 +249,7 @@ export default function DashboardOne() {
               </div>
               <div className="py-30 px-30">
                 <div className="y-gap-40">
-                  {dashboard.popularTeachers?.map((elm, i) => (
+                  {admdashboard.popularTeachers?.map((elm, i) => (
                     <div
                       key={i}
                       className={`d-flex ${i != 0 ? "border-top-light" : ""} `}
@@ -308,7 +308,7 @@ export default function DashboardOne() {
               </div>
               <div className="py-30 px-30">
                 <div className="y-gap-40">
-                  {dashboard.recentCourses?.map((elm, i) => (
+                  {admdashboard.recentCourses?.map((elm, i) => (
                     <div
                       key={i}
                       className={`d-flex ${i != 0 ? "border-top-light" : ""} `}

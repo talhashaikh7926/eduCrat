@@ -1,12 +1,24 @@
 "use client";
 
 import { reviews } from "@/data/aboutcourses";
-import React from "react";
-
+import React, { useState, useEffect } from "react";
+import { fetchStudentReviews } from "@/app/redux/slices/studentReviewsSlice";
+import { useDispatch, useSelector } from "react-redux";
 export default function Reviews() {
+  const dispatch = useDispatch();
+
+  const { fetching, stdreviews, error } = useSelector((state) => state.StudentReviews);
+
+  useEffect(() => {
+
+    dispatch(fetchStudentReviews());
+  }, [dispatch]);
+
+  console.log(stdreviews,"ssss");
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+
   return (
     <div className="mt-60 lg:mt-40">
       <div className="blogPost -comments">

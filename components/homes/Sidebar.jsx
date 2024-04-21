@@ -41,6 +41,17 @@ export default function Sidebar() {
                 </Link>
               </div>
             )}
+            {user == 'admin' && (
+              <div className="sidebar__item">
+                <Link
+                  href="instructors-list-1"
+                  className="-dark-sidebar-white d-flex items-center text-17 lh-1 fw-500"
+                >
+                  <i className="text-20  icon-discovery mr-15"></i>
+                  Instructors
+                </Link>
+              </div>
+            )}
             {user == 'teacher' && (
               <div className="sidebar__item ">
                 <Link
@@ -96,7 +107,7 @@ export default function Sidebar() {
               </a>
             </div> */}
 
-            <div className="sidebar__item ">
+            {/* <div className="sidebar__item ">
               <Link
                 href="/blog-list-1"
                 className="-dark-sidebar-white d-flex items-center text-17 lh-1 fw-500"
@@ -104,7 +115,18 @@ export default function Sidebar() {
                 <i className="text-20 icon-list mr-15"></i>
                 Articles
               </Link>
-            </div>
+            </div> */}
+            {user == 'teacher' && (
+              <div className="sidebar__item ">
+                <Link
+                  href="/dshb-reviews"
+                  className="-dark-sidebar-white d-flex items-center text-17 lh-1 fw-500"
+                >
+                  <i className="text-20 icon-list mr-15"></i>
+                  Reviews
+                </Link>
+              </div>
+            )}
 
             <div className="sidebar__item ">
               <Link

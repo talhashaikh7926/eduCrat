@@ -7,12 +7,18 @@ const categories = [
   { label: "Business" },
 ];
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { teamMembers, sortingOptions } from "@/data/instractors";
+import { fetchTeachers } from '@/app/redux/slices/teacherSlice';
 
 import PaginationTwo from "@/components/common/PaginationTwo";
 import Image from "next/image";
 import Link from "next/link";
 export default function Instractors() {
+  const dispatch = useDispatch();
+
+
+  const { fetching, teachers, error } = useSelector((state) => state.allTeacher?.teachers);
   const [currentCategory, setCurrentCategory] = useState("All Categories");
   const [pageNumber, setPageNumber] = useState(1);
   const [pageData, setPageData] = useState([]);
@@ -29,6 +35,12 @@ export default function Instractors() {
     }
   }, [currentSortingOption, pageData]);
 
+  useEffect(() => {
+    // Dispatch fetchCourses action when the component mounts
+    dispatch(fetchTeachers());
+  }, [dispatch]);
+
+  console.log(teachers, "---");
   const inActivateDD = () => {
     document.getElementById("dd30button").classList.remove("-is-dd-active");
     document.getElementById("dd30content").classList.remove("-is-el-visible");
@@ -78,12 +90,12 @@ export default function Instractors() {
             <div className="col-auto">
               <div className="text-14 lh-12">
                 Showing{" "}
-                <span className="text-dark-1 fw-500">{pageData.length}</span>{" "}
+                <span className="text-dark-1 fw-500">{teachers?.length}</span>{" "}
                 total results
               </div>
             </div>
 
-            <div className="col-auto">
+            {/* <div className="col-auto">
               <div className="row x-gap-20 y-gap-20 items-center">
                 <div className="col-auto">
                   <form onSubmit={handleSubmit} className="search-field h-50">
@@ -209,57 +221,56 @@ export default function Instractors() {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
 
           <div className="row y-gap-30">
-            {sortedFilteredData
-              .slice((pageNumber - 1) * 8, pageNumber * 8)
-              .map((elm, i) => (
-                <div key={i} className="col-lg-3 col-md-6">
-                  <div className="teamCard -type-1">
-                    <div className="teamCard__image">
-                      <Image
-                        width={488}
-                        height={537}
-                        src={elm.image}
-                        alt="image"
-                      />
-                    </div>
-                    <div className="teamCard__content">
-                      <h4 className="teamCard__title">
-                        <Link
-                          className="linkCustom"
-                          href={`/instructors/${elm.id}`}
-                        >
-                          {elm.name}
-                        </Link>
-                      </h4>
-                      <p className="teamCard__text">{elm.role}</p>
-                      <div className="d-flex x-gap-10 pt-10">
-                        <div className="d-flex items-center">
-                          <div className="icon-star text-yellow-1 text-14"></div>
-                          <div className="text-13 lh-1 ml-8">{elm.rating}</div>
-                        </div>
 
-                        <div className="d-flex items-center">
-                          <div className="icon-person-3 text-14"></div>
-                          <div className="text-13 lh-1 ml-8">
-                            {elm.students} Students
-                          </div>
-                        </div>
+            {teachers?.map((elm, i) => (
+              <div key={i} className="col-lg-3 col-md-6">
+                <div className="teamCard -type-1">
+                  <div className="teamCard__image">
+                    <Image
+                      width={488}
+                      height={537}
+                      src={elm.profilePicture ? elm.profilePicture : null}
+                      alt="image"
+                    />
+                  </div>
+                  <div className="teamCard__content">
+                    <h4 className="teamCard__title">
+                      <Link
+                        className="linkCustom"
+                        href={`/instructors/${elm.id}`}
+                      >
+                        {elm.firstName +" "+ elm.lastName}
+                      </Link>
+                    </h4>
+                    <p className="teamCard__text">{elm.personalInfo}</p>
+                    <div className="d-flex x-gap-10 pt-10">
+                      <div className="d-flex items-center">
+                        <div className="icon-star text-yellow-1 text-14"></div>
+                        <div className="text-13 lh-1 ml-8">{elm?.averageRating.toFixed(1)}</div>
+                      </div>
 
-                        <div className="d-flex items-center">
-                          <div className="icon-play text-14"></div>
-                          <div className="text-13 lh-1 ml-8">
-                            {elm.courses} Course
-                          </div>
+                      <div className="d-flex items-center">
+                        <div className="icon-person-3 text-14"></div>
+                        <div className="text-13 lh-1 ml-8">
+                          {elm?.totalEnrollments} Students
+                        </div>
+                      </div>
+
+                      <div className="d-flex items-center">
+                        <div className="icon-play text-14"></div>
+                        <div className="text-13 lh-1 ml-8">
+                          {elm?.totalCourses} Course
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              ))}
+              </div>
+            ))}
           </div>
 
           <div className="row justify-center pt-60 lg:pt-40">

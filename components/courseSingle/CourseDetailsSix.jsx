@@ -12,6 +12,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ModalVideo from "react-modal-video";
 import ModalVideoComponent from "../common/ModalVideo";
+import ReactStars from "react-stars";
 import Image from "next/image";
 import { useContextElement } from "@/context/Context";
 const menuItems = [
@@ -32,17 +33,25 @@ export default function CourseDetailsSix({ id }) {
     setPageItem(coursesData.filter((elm) => elm.id == id)[0] || coursesData[0]);
   }, []);
 
+
   useEffect(() => {
     const url = window.location.pathname;
     const parts = url.split('/');
-    const courseId = parts[2]; 
+    const courseId = parts[2];
     dispatch(fetchCourseId(courseId))
   }, []);
-  
-const isVideoModal = (item) => {
-setIsOpen(true)
-setIsVideo(item)
-}
+
+  const calculateCourseRating = (itm) => {
+
+    if (itm?.length === 0) return 0;
+    const totalRating = itm?.reduce((acc, curr) => acc + curr.rating, 0);
+    return totalRating / itm?.length;
+  };
+
+  const isVideoModal = (item) => {
+    setIsOpen(true)
+    setIsVideo(item)
+  }
 
 
   return (
@@ -84,19 +93,25 @@ setIsVideo(item)
                 </div>
 
                 <p className="text-dark-3 mt-20">
-                 {courseIdData.shortDescription}
+                  {courseIdData.shortDescription}
                 </p>
 
                 <div className="d-flex x-gap-30 y-gap-10 items-center flex-wrap pt-20">
                   <div className="d-flex items-center text-dark-3">
                     <div className="text-14 lh-1 text-yellow-1 mr-10">
-                      {pageItem.rating}
+                      {calculateCourseRating(courseIdData?.reviews).toFixed(1)}
                     </div>
                     <div className="d-flex x-gap-5 items-center">
-                      <Star textSize={"text-11"} star={pageItem.rating} />
+                      <ReactStars
+                        count={5}
+                        size={24}
+                        value={calculateCourseRating(courseIdData?.reviews)}
+                        edit={false}
+                        color2={'#ffd700'}  // Optional: Customize star color
+                      />
                     </div>
                     <div className="text-14 lh-1 ml-10">
-                      ({pageItem.ratingCount})
+                      ({courseIdData?.reviewsLength})
                     </div>
                   </div>
 
@@ -121,7 +136,7 @@ setIsVideo(item)
                     }}
                   ></div>
                   <div className="text-14 lh-1 ml-10 text-dark-3">
-                    {courseIdData.teacher?.firstName +' '+ courseIdData.teacher?.lastName}
+                    {courseIdData.teacher?.firstName + ' ' + courseIdData.teacher?.lastName}
                   </div>
                 </div>
 

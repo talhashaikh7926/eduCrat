@@ -6,7 +6,7 @@ export const HeaderExplore = ({ allClasses }) => {
   const [exploreActive, setExploreActive] = useState(false);
   return (
     <>
-      <div className={`${allClasses ? allClasses : ""}`}>
+      {/* <div className={`${allClasses ? allClasses : ""}`}>
         <Link
           href="#"
           onClick={() => setExploreActive((pre) => !pre)}
@@ -313,7 +313,7 @@ export const HeaderExplore = ({ allClasses }) => {
             </Link>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

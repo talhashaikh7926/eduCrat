@@ -11,15 +11,19 @@ export default function Menu({ allClasses, headerPosition }) {
   const [menuItem, setMenuItem] = useState("");
   const [submenu, setSubmenu] = useState("");
   const pathname = usePathname();
+  const storedPayloadString = localStorage.getItem("userPayload");
+  const storedPayload = JSON.parse(storedPayloadString);
+
 
   useEffect(() => {
+
     menuList.forEach((elm) => {
       elm?.links?.forEach((elm2) => {
-        if (elm2.href?.split('/')[1]  == pathname.split('/')[1] ) {
+        if (elm2.href?.split('/')[1] == pathname.split('/')[1]) {
           setMenuItem(elm.title);
         } else {
           elm2?.links?.map((elm3) => {
-            if (elm3.href?.split('/')[1]  == pathname.split('/')[1] ) {
+            if (elm3.href?.split('/')[1] == pathname.split('/')[1]) {
               setMenuItem(elm.title);
               setSubmenu(elm2.title);
             }
@@ -31,24 +35,24 @@ export default function Menu({ allClasses, headerPosition }) {
 
   return (
     <div
-      className={`header-menu js-mobile-menu-toggle ${
-        headerPosition ? headerPosition : ""
-      }`}
+      className={`header-menu js-mobile-menu-toggle ${headerPosition ? headerPosition : ""
+        }`}
     >
       <div className="header-menu__content">
         <div className="mobile-bg js-mobile-bg"></div>
 
         <div className="d-none xl:d-flex items-center px-20 py-20 border-bottom-light">
-          <Link href="/login" className="text-dark-1">
-            Log in
-          </Link>
-          <Link href="/signup" className="text-dark-1 ml-30">
-            Sign Up
-          </Link>
+        
+              <Link href="/login" className="text-dark-1">
+                Log in
+              </Link>
+              <Link href="/signup" className="text-dark-1 ml-30">
+                Sign Up
+              </Link>
         </div>
 
         <div className="menu js-navList">
-          <ul className={`${allClasses ? allClasses : ""}`}>
+          {/* <ul className={`${allClasses ? allClasses : ""}`}>
             <li className="menu-item-has-children">
               <Link
                 data-barba
@@ -415,7 +419,7 @@ export default function Menu({ allClasses, headerPosition }) {
                 Contact
               </Link>
             </li>
-          </ul>
+          </ul> */}
         </div>
 
         {/* mobile footer start */}

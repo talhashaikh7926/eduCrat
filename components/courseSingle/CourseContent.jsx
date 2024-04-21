@@ -5,18 +5,28 @@ import { lessonItems } from "@/data/aboutcourses";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ModalVideoComponent from "../common/ModalVideo";
+import { updateProgress } from "@/app/redux/slices/progressSlice";
 
 export default function CourseContent() {
+  const dispatch = useDispatch();
   const { fetching, courseIdData, error } = useSelector((state) => state.courseById);
   const [activeItemId, setActiveItemId] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const [videos, setVideos] = useState(null);
-
-  const previewModal = (itm)=> {
+  
+  const previewModal = (itm) => {
+   
+    if (itm && courseIdData) {
+  
+      const obj = {curriculumId: itm._id, courseId:courseIdData._id}
+      console.log(obj,"-=-=-===========");
+      dispatch(updateProgress(obj));
+      console.log("sss");
+    }
     setIsOpen(true)
-    setVideos(itm)
+    setVideos(itm?.videoUrl)
   }
-  console.log(courseIdData,"-----kk");
+
   return (
     <>
       <div id="course-content" className="pt-60 lg:pt-40">
@@ -79,7 +89,7 @@ export default function CourseContent() {
 
                           <div className="d-flex x-gap-20 items-center">
                             <span
-                              onClick={() => previewModal(itm.videoUrl)}
+                              onClick={() => previewModal(itm)}
                               className="text-14 lh-1 text-purple-1 underline cursor "
                             >
                               Preview

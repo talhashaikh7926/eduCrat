@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const storedPayloadString = localStorage.getItem("userPayload");
-const storedPayload = JSON.parse(storedPayloadString);
+const storedPayload = storedPayloadString ? JSON.parse(storedPayloadString) : null;
 const token = storedPayload?.token;
 
 

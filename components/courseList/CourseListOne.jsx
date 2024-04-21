@@ -21,6 +21,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useContextElement } from "@/context/Context";
 import PaginationTwo from "../common/PaginationTwo";
+import ReactStars from "react-stars";
 
 export default function CourseListOne() {
   const dispatch = useDispatch();
@@ -59,7 +60,12 @@ export default function CourseListOne() {
     dispatch(fetchCourses());
   }, [dispatch]);
 
+  const calculateCourseRating = (itm) => {
 
+    if (itm?.length === 0) return 0;
+    const totalRating = itm?.reduce((acc, curr) => acc + curr.rating, 0);
+    return totalRating / itm?.length;
+  };
   const storedPayloadString = localStorage.getItem("userPayload");
   const storedPayload = JSON.parse(storedPayloadString);
   const role = storedPayload?.role;
@@ -240,7 +246,7 @@ export default function CourseListOne() {
         <div className="container">
           <div className="row y-gap-50">
             <div className="col-xl-3 col-lg-4 lg:d-none">
-              <div className="pr-30 lg:pr-0">
+              {/* <div className="pr-30 lg:pr-0">
                 <div className="sidebar -courses">
                   <div className="sidebar__item">
                     <div className="accordion js-accordion">
@@ -871,11 +877,11 @@ export default function CourseListOne() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
 
             <div className="col-xl-9 col-lg-8">
-              <div className="accordion js-accordion">
+              {/* <div className="accordion js-accordion">
                 <div
                   className={`accordion__item ${filterOpen ? "is-active" : ""
                     } `}
@@ -1454,7 +1460,7 @@ export default function CourseListOne() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
 
 
 
@@ -1518,13 +1524,19 @@ export default function CourseListOne() {
                       <div className="h-100 pt-15">
                         <div className="d-flex items-center">
                           <div className="text-14 lh-1 text-yellow-1 mr-10">
-                            {course.title}
+                            {calculateCourseRating(course?.reviews).toFixed(1)}
                           </div>
                           <div className="d-flex x-gap-5 items-center">
-                            <Star star={'2'} />
+                            <ReactStars
+                              count={5}
+                              size={24}
+                              value={calculateCourseRating(course?.reviews)}
+                              edit={false}
+                              color2={'#ffd700'}  // Optional: Customize star color
+                            />
                           </div>
                           <div className="text-13 lh-1 ml-10">
-                            ({'1991'})
+                            {course?.reviews?.length}
                           </div>
                         </div>
 

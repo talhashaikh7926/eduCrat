@@ -1,10 +1,19 @@
-import { reviews } from "@/data/reviews";
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
+import { fetchStudentReviews } from "@/app/redux/slices/studentReviewsSlice";
+import { useDispatch, useSelector } from "react-redux";
 import Star from "../common/Star";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Reviews() {
+  const dispatch = useDispatch();
+  const { fetching, stdreviews, error } = useSelector((state) => state.StudentReviews);
+
+  useEffect(() => {
+    dispatch(fetchStudentReviews());
+  }, [dispatch]);
+
   return (
     <div className="dashboard__main">
       <div className="dashboard__content bg-light-4">
@@ -26,50 +35,55 @@ export default function Reviews() {
 
               <div className="py-30 px-30">
                 <div className="row y-gap-30">
-                  {reviews.map((elm, i) => (
-                    <div key={i} className="md:direction-column">
-                      <div
-                        className={`d-flex ${
-                          i != 0 ? "border-top-light" : ""
-                        }  pt-30`}
-                      >
-                        <div className="mr-20">
-                          <Image
-                            width={60}
-                            height={60}
-                            src={elm.avatarSrc}
-                            alt="image"
-                          />
-                        </div>
+                  {fetching ? (
+                    <p>Loading reviews...</p>
+                  ) : error ? (
+                    <p>Error: {error}</p>
+                  ) : (
+                    stdreviews?.reviews?.map((elm, i) => (
+                      <div key={i} className="md:direction-column">
+                        <div
+                          className={`d-flex ${i !== 0 ? "border-top-light" : ""
+                            }  pt-30`}
+                        >
+                          <div className="mr-20">
+                            <Image
+                              width={60}
+                              height={60}
+                              src={elm?.profilePictureUrl ? elm?.profilePictureUrl : null}
+                              alt="image"
+                            />
+                          </div>
 
-                        <div className="comments__body md:mt-15">
-                          <div className="comments__header">
-                            <h4 className="text-17 fw-500 lh-15">
-                              {elm.name}
-                              <span className="text-13 text-light-1 fw-400 ml-5">
-                                {elm.date}
-                              </span>
-                            </h4>
+                          <div className="comments__body md:mt-15">
+                            <div className="comments__header">
+                              <h4 className="text-17 fw-500 lh-15">
+                                {elm.studentFirstName + " " + elm.studentLastName}
+                                <span className="text-13 text-light-1 fw-400 ml-5">
+                                  {elm.date}
+                                </span>
+                              </h4>
 
-                            <div className="d-flex x-gap-5 items-center mt-15">
-                              <Star star={elm.rating} />
+                              <div className="d-flex x-gap-5 items-center mt-15">
+                                <Star star={elm?.rating} />
+                              </div>
                             </div>
-                          </div>
 
-                          <h5 className="text-15 fw-500 mt-15">{elm.title}</h5>
-                          <div className="comments__text mt-10">
-                            <p>{elm.comment}</p>
-                          </div>
+                            <h5 className="text-15 fw-500 mt-15">{elm?.title}</h5>
+                            <div className="comments__text mt-10">
+                              <p>{elm?.reviewText}</p>
+                            </div>
 
-                          <div className="comments__helpful mt-20">
-                            <button className="button text-13 -sm -light-7 -dark-button-dark-2 text-purple-1">
-                              Respond
-                            </button>
+                            <div className="comments__helpful mt-20">
+                              {/* <button className="button text-13 -sm -light-7 -dark-button-dark-2 text-purple-1">
+                                Respond
+                              </button> */}
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    ))
+                  )}
                 </div>
               </div>
             </div>
@@ -121,7 +135,9 @@ export default function Reviews() {
             </div>
           </div>
         </div>
+
       </footer>
     </div>
+
   );
 }

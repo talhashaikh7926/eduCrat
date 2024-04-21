@@ -1,4 +1,4 @@
-import { configureStore,combineReducers } from '@reduxjs/toolkit';
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import authReducer from './slices/authSlice';
 import registerReducer from './slices/registerSlice';
 import getCourseReducer from './slices/getCourseSlice';
@@ -12,6 +12,9 @@ import getEnrollReducer from './slices/enrollByIdSlice';
 import getCourseIdReducer from './slices/courseIdSlice'
 import teacherDashboardReducer from './slices/dashboardSlice'
 import getReviewReducer from './slices/reviewSlice'
+import getStudentReviewSlice from './slices/studentReviewsSlice'
+import getTeacherReducer from './slices/teacherSlice'
+import adminDashboardSlice from './slices/adminDashSlice';
 
 export const RESET_STORE = 'RESET_STORE';
 const rootReducer = (state, action) => {
@@ -31,7 +34,10 @@ const rootReducer = (state, action) => {
     enrollStudent: getEnrollReducer,
     courseById: getCourseIdReducer,
     teacherDashboard: teacherDashboardReducer,
-    allReviews: getReviewReducer
+    allReviews: getReviewReducer,
+    StudentReviews: getStudentReviewSlice,
+    allTeacher: getTeacherReducer,
+    admindashboard:adminDashboardSlice
   })(state, action);
 };
 

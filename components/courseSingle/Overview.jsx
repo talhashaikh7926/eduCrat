@@ -8,7 +8,6 @@ export default function Overview() {
   const { fetching, courseIdData, error } = useSelector((state) => state.courseById);
   const [showMore, setShowMore] = useState(false);
 
-  console.log(courseIdData,"-=-==-=-=-=-=-");
  
   return (
     <div id="overview" className="pt-60 lg:pt-40 to-over">

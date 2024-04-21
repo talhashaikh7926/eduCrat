@@ -61,6 +61,7 @@ export default function HeaderNine({ setIsSidebarClosed, setMessageOpen }) {
       document?.msExitFullscreen();
     }
   };
+  
 
   const LogOut = () => {
     dispatch({ type: RESET_STORE });
@@ -101,7 +102,7 @@ export default function HeaderNine({ setIsSidebarClosed, setMessageOpen }) {
                 </Link>
               </div>
 
-              <form
+              {/* <form
                 onSubmit={handleSubmit}
                 className="search-field rounded-16 h-50 -reverse-button -w-340 ml-90 xl:ml-20 lg:d-none"
               >
@@ -114,7 +115,7 @@ export default function HeaderNine({ setIsSidebarClosed, setMessageOpen }) {
                 <button className="text-light-1" type="submit">
                   <i className="icon-search text-20"></i>
                 </button>
-              </form>
+              </form> */}
             </div>
           </div>
 

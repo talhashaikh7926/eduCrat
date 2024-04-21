@@ -9,10 +9,20 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import MobileMenu from "../component/MobileMenu";
+import { useRouter } from 'next/navigation';
+import { RESET_STORE } from '@/app/redux/store';
 
 export default function Header() {
   const [activeMobileMenu, setActiveMobileMenu] = useState(false);
-
+  const router = useRouter();
+  const storedPayloadString = localStorage.getItem("userPayload");
+  const storedPayload = JSON.parse(storedPayloadString);
+  const handleLogout = () => {
+    dispatch({ type: RESET_STORE });
+    localStorage.removeItem("userPayload");
+    router.push("/")
+  };
+  
   return (
     <>
       <header className="header -type-1 ">
@@ -21,14 +31,25 @@ export default function Header() {
             <div className="col-auto">
               <div className="header-left">
                 <div className="header__logo ">
-                  <Link href="/">
-                    <Image
-                      width={140}
-                      height={50}
-                      src="/assets/img/general/logo.svg"
-                      alt="logo"
-                    />
-                  </Link>
+                  {!storedPayload?.success ?
+                    <Link href="/home-10">
+                      <Image
+                        width={140}
+                        height={50}
+                        src="/assets/img/general/logo.svg"
+                        alt="logo"
+                      />
+                    </Link>
+                    :
+                    <Link href="/home-10">
+                      <Image
+                        width={140}
+                        height={50}
+                        src="/assets/img/general/logo.svg"
+                        alt="logo"
+                      />
+                    </Link>
+                  }
                 </div>
 
                 {/* header explore start */}
@@ -73,15 +94,23 @@ export default function Header() {
                 </div>
 
                 <div className="header-right__buttons d-flex items-center ml-30 md:d-none">
-                  <Link href="/login" className="button -underline text-white">
-                    Log in
-                  </Link>
-                  <Link
-                    href="/signup"
-                    className="button -sm -white text-dark-1 ml-30"
+                  {!storedPayload?.success ?
+                    <>
+                      <Link href="/login" className="text-light-1">
+                        Log in
+                      </Link>
+                      <Link href="/signup" className="text-light-1 ml-30">
+                        Sign Up
+                      </Link>
+                    </>
+                    :
+                    <button
+                    className="button text-light-1 ml-30"
+                    onClick={() => handleLogout()}
                   >
-                    Sign up
-                  </Link>
+                    Log Out
+                  </button>
+}                  
                 </div>
               </div>
             </div>

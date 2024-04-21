@@ -2886,6 +2886,11 @@ react-smooth@^2.0.2:
     fast-equals "^5.0.0"
     react-transition-group "2.9.0"
 
+react-stars@^2.2.5:
+  version "2.2.5"
+  resolved "https://registry.npmjs.org/react-stars/-/react-stars-2.2.5.tgz"
+  integrity sha512-O//KS6Z9RZnUOU/r+3+wxCzNalVn/wEWIcbAQFRV3dw8WbV+ys/kgcpBPijqTiNpHGrcwZdtb/7wF/UVem20CQ==
+
 react-toastify@^10.0.5:
   version "10.0.5"
   resolved "https://registry.npmjs.org/react-toastify/-/react-toastify-10.0.5.tgz"
