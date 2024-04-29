@@ -53,8 +53,8 @@ export default function LoginForm() {
         <div className="row justify-center items-center">
           <div className="col-xl-6 col-lg-8">
             <div className="px-50 py-50 md:px-25 md:py-25 bg-white shadow-1 rounded-16">
-              <h3 className="text-30 lh-13">Login</h3>
-              <p className="mt-10">
+              <h3 className="text-30 lh-13"style={{ color: "#333" }}>Login</h3>
+              <p className="mt-10" >
                 Don't have an account yet?
                 <Link href="/signup" className="text-purple-1">
                   Sign up for free
@@ -65,8 +65,8 @@ export default function LoginForm() {
                 className="contact-form respondForm__form row y-gap-20 pt-30"
                 onSubmit={handleSubmit}
               >
-                <div className="col-12">
-                  <label htmlFor="usernameOrEmail" className="text-16 lh-1 fw-500 text-dark-1 mb-10">
+                <div className="col-12"  >
+                  <label htmlFor="usernameOrEmail" className="text-16 lh-1 fw-500 -1 mb-10" style={{ color: "#333" }}>
                     Username Or Email
                   </label>
                   <input
@@ -80,7 +80,7 @@ export default function LoginForm() {
                   />
                 </div>
                 <div className="col-12">
-                  <label htmlFor="password" className="text-16 lh-1 fw-500 text-dark-1 mb-10">
+                  <label htmlFor="password" className="text-16 lh-1 fw-500 -1 mb-10" style={{ color: "#333" }}>
                     Password
                   </label>
                   <input

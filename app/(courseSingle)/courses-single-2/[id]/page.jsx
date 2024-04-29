@@ -8,7 +8,7 @@ import Preloader from '@/components/common/Preloader'
 
 import CourseDetailsTwo from '@/components/courseSingle/CourseDetailsTwo'
 import CourseSlider from '@/components/courseSingle/CourseSlider'
-import FooterOne from '@/components/layout/footers/FooterOne'
+import FooterOne from '@/components/layout/footers/FooterNine'
 
 import Header from '@/components/layout/headers/Header'
 import React from 'react'

@@ -30,7 +30,7 @@ export default function page() {
             <Instractors/>
            
             <CourseListSix/>
-            <FooterOne/>
+        
         </div>
     </div>
   )

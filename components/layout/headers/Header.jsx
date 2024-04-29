@@ -7,12 +7,17 @@ import CartToggle from "../component/CartToggle";
 import Menu from "../component/Menu";
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MobileMenu from "../component/MobileMenu";
 import { useRouter } from 'next/navigation';
 import { RESET_STORE } from '@/app/redux/store';
 
 export default function Header() {
+  useEffect(() => {
+    document.documentElement.classList.add("-dark-mode");
+  }, []);
+
+
   const [activeMobileMenu, setActiveMobileMenu] = useState(false);
   const router = useRouter();
   const storedPayloadString = localStorage.getItem("userPayload");
@@ -25,8 +30,8 @@ export default function Header() {
   
   return (
     <>
-      <header className="header -type-1 ">
-        <div className="header__container">
+       <header className=" header -base-sidebar border-bottom-light bg-white js-header">
+      <div className="header__container py-20 px-10">
           <div className="row justify-between items-center">
             <div className="col-auto">
               <div className="header-left">

@@ -56,7 +56,7 @@ export default function SignUpForm() {
         <div className="row justify-center items-center">
           <div className="col-xl-8 col-lg-9">
             <div className="px-50 py-50 md:px-25 md:py-25 bg-white shadow-1 rounded-16">
-              <h3 className="text-30 lh-13">Sign Up</h3>
+              <h3 className="text-30 lh-13"   style={{ color: "#333" }}>Sign Up</h3>
               <p className="mt-10">
                 Already have an account?
                 <Link href="/login" className="text-purple-1">
@@ -69,7 +69,7 @@ export default function SignUpForm() {
                 onSubmit={handleSubmit}
               >
                 <div className="col-lg-6">
-                  <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
+                  <label className="text-16 lh-1 fw-500 -1 mb-10" style={{ color: "#333" }}>
                     Email address *
                   </label>
                   <input
@@ -82,7 +82,7 @@ export default function SignUpForm() {
                   />
                 </div>
                 <div className="col-lg-6">
-                  <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
+                  <label className="text-16 lh-1 fw-500 -1 mb-10" style={{ color: "#333" }}>
                     Username *
                   </label>
                   <input
@@ -95,7 +95,7 @@ export default function SignUpForm() {
                   />
                 </div>
                 <div className="col-lg-6">
-                  <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
+                  <label className="text-16 lh-1 fw-500 -1 mb-10"style={{ color: "#333" }}>
                     Password *
                   </label>
                   <input
@@ -108,7 +108,7 @@ export default function SignUpForm() {
                   />
                 </div>
                 <div className="col-lg-6">
-                  <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
+                  <label className="text-16 lh-1 fw-500 -1 mb-10" style={{ color: "#333" }} >
                     Confirm Password *
                   </label>
                   <input

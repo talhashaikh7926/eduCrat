@@ -8,8 +8,8 @@ import Link from "next/link";
 export default function HeaderAuth() {
   const [activeMobileMenu, setActiveMobileMenu] = useState(false);
   return (
-    <header className="header -base js-header">
-      <div className="header__container py-10">
+    <header className=" header -base-sidebar border-bottom-light bg-white js-header">
+    <div className="header__container py-20 px-10">
         <div className="row justify-between items-center">
           <div className="col-auto">
             <div className="header-left">
@@ -49,7 +49,7 @@ export default function HeaderAuth() {
               <div className="header-right__buttons md:d-none">
                 <a
                   href="signup"
-                  className="button -sm -rounded -dark-1 text-white"
+                  className="button -sm -rounded -light-1 text-white"
                 >
                   Sign Up
                 </a>

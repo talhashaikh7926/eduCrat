@@ -30,6 +30,7 @@ export default function HeaderNine({ setIsSidebarClosed, setMessageOpen }) {
   };
 
   useEffect(() => {
+     document.documentElement.classList.add("-dark-mode");
     setDocumentElement(document.documentElement);
   }, []);
   const openFullscreen = () => {

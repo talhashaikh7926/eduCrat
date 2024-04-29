@@ -39,7 +39,6 @@ export default function page({ params }) {
 
             <RelatedBlogs/>
        
-            <FooterOne/>
         </div>
 
     </div>

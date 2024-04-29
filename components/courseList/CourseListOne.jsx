@@ -56,6 +56,7 @@ export default function CourseListOne() {
   const [pageNumber, setPageNumber] = useState(1);
 
   useEffect(() => {
+    
     // Dispatch fetchCourses action when the component mounts
     dispatch(fetchCourses());
   }, [dispatch]);

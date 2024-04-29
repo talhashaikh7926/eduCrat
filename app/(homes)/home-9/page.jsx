@@ -16,7 +16,7 @@ export default function page() {
   return (
     <div style={{maxWidth:'100vw',overflow:'hidden'}}>
       
-      <ModeChanger whiteMode={true}/>
+      <ModeChanger whiteMode={false}/>
         <HomeNine/>
     </div>
   )

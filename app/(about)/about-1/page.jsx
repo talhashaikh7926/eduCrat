@@ -44,7 +44,7 @@ export default function page() {
 
             
             
-            <FooterOne/>
+           
         </div>
 
     </div>

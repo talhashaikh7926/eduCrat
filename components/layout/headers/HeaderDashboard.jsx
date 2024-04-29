@@ -30,7 +30,9 @@ export default function HeaderDashboard() {
     }
   };
 
+
   useEffect(() => {
+    document.documentElement.classList.add("-dark-mode");
     setDocumentElement(document.documentElement);
   }, []);
   const openFullscreen = () => {
@@ -63,28 +65,7 @@ export default function HeaderDashboard() {
     }
   };
   const handleResize = () => { };
-  useEffect(() => {
-    if (window.innerWidth > 990) {
-      document
-        .getElementById("dashboardOpenClose")
-        .classList.add("-is-sidebar-hidden");
-    }
-    const handleResize = () => {
-      if (window.innerWidth > 990) {
-        document
-          .getElementById("dashboardOpenClose")
-          .classList.add("-is-sidebar-hidden");
-      }
-    };
 
-    // Add event listener to window resize event
-    window.addEventListener("resize", handleResize);
-
-    // Clean up the event listener when component unmounts
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
   return (
     <>
       <header className="header -dashboard -dark-bg-dark-1 js-header">

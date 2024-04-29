@@ -35,7 +35,7 @@ export default function page() {
             <PageLinks/>
             <HelpCenter/>
             <Faq/>
-            <FooterOne/>
+            
         </div>
 
     </div>

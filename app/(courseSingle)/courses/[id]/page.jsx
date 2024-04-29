@@ -7,7 +7,7 @@ import PageLinks from '@/components/common/PageLinks'
 import Preloader from '@/components/common/Preloader'
 import CourseDetailsOne from '@/components/courseSingle/CourseDetailsOne'
 import CourseSlider from '@/components/courseSingle/CourseSlider'
-import FooterOne from '@/components/layout/footers/FooterOne'
+import FooterOne from '@/components/layout/footers/FooterNine'
 
 import Header from '@/components/layout/headers/Header'
 import React from 'react'

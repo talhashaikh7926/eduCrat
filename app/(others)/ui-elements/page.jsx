@@ -62,8 +62,7 @@ export default function page() {
                 <Typography/>
               </div>
             </section>
-            
-            <FooterOne/>
+          =
         </div>
 
     </div>

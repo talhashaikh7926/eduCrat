@@ -35,7 +35,7 @@ export default function page({ params }) {
 
             
        
-            <FooterOne/>
+         
         </div>
 
     </div>

@@ -3,7 +3,7 @@
 import PageLinks from '@/components/common/PageLinks'
 import Preloader from '@/components/common/Preloader'
 
-import FooterOne from '@/components/layout/footers/FooterOne'
+import FooterOne from '@/components/layout/footers/FooterNine'
 import Header from '@/components/layout/headers/Header'
 
 import React from 'react'

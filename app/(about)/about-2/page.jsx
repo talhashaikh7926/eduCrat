@@ -49,7 +49,7 @@ export default function page() {
             <Brands/>
 
             
-            <FooterOne/>
+          
         </div>
 
     </div>

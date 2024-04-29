@@ -16,7 +16,7 @@ export default function Menu({ allClasses, headerPosition }) {
 
 
   useEffect(() => {
-
+    document.documentElement.classList.add("-dark-mode");
     menuList.forEach((elm) => {
       elm?.links?.forEach((elm2) => {
         if (elm2.href?.split('/')[1] == pathname.split('/')[1]) {

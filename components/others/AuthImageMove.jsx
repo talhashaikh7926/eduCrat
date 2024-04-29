@@ -9,6 +9,7 @@ export default function AuthImageMove() {
     e.preventDefault();
   };
   useEffect(() => {
+    document.documentElement.classList.add("-dark-mode");
     const parallaxIt = () => {
       const target = document.querySelectorAll(".js-mouse-move-container");
 

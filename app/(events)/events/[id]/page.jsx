@@ -30,7 +30,6 @@ export default function page({ params }) {
 
             <EventDetails id={params.id} />
        
-            <FooterOne/>
         </div>
 
     </div>

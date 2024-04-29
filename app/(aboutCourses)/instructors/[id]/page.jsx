@@ -22,7 +22,7 @@ export default function page({ params }) {
         <div  className="content-wrapper  js-content-wrapper overflow-hidden">
             <PageLinks/>
             <InstractorSingle  id={params.id} />
-            <FooterOne/>
+        
         </div>
     </div>
   )

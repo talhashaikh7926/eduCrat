@@ -25,7 +25,7 @@ export default function page() {
         <div className="content-wrapper  js-content-wrapper overflow-hidden">
             <PageLinks/>
             <CourseListFour/>
-            <FooterOne/>
+        
         </div>
     </div>
   )

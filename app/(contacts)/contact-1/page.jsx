@@ -23,7 +23,7 @@ export default function page() {
         <ContactOne />
         <Faq />
 
-        <FooterOne />
+   
       </div>
     </div>
   );

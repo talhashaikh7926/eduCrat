@@ -29,7 +29,7 @@ export default function page() {
 
             <ShopList/>
             
-            <FooterOne/>
+          
         </div>
 
     </div>
